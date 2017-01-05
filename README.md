@@ -3,7 +3,7 @@
 Knackles is an async ORM.  Knackles is currently under development and
 this documentation serves as a reference for implementation.
 
-python```
+```python
 from knackles import Model, CharField, IDField, PostgresDatabase
 
 database = PostgresDatabase(host='postgres', user='pguser', password='moonmoonwhy', database='moon_test')
