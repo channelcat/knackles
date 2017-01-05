@@ -1,0 +1,15 @@
+version: '2'
+services:
+  moon:
+    build: .
+    command: python /code/manage.py
+    volumes:
+      - .:/code
+  postgres:
+    image: postgres
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_USER=pguser
+      - POSTGRES_PASSWORD=moonmoonwhy
+      - POSTGRES_DB=moon_test
