@@ -1,3 +1,7 @@
+# !!! DISCONTINUED !!!
+
+I'm going to move my efforts to focusing on async peewee
+
 # Knackles
 
 Knackles is an async ORM.  Knackles is currently under development and
