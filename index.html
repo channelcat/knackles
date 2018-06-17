@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="assets/style.css?t=615badd5">
+    <script src="assets/script.js?t=42463e55"></script>
+    <title>!!! DISCONTINUED !!!</title>
+    <meta name="viewport" content="width=device-width">
+  </head>
+  <body class="-menu-visible">
+    <div class="doc-layout">
+      <div class="toggle menu-toggle js-menu-toggle"></div>
+      <div class="menu toc-menu">
+        <li class="menu-item -level-0 -parent">
+          <ul class="submenu">
+            <li class="menu-item -level-1"><a class="link title -active link-index" href="index.html">!!! DISCONTINUED !!!</a>
+            </li>
+            <li class="menu-item -level-1"><a class="link title link-planned-features" href="#planned-features">Planned Features</a>
+            </li>
+          </ul>
+        </li>
+      </div>
+      <div class="body page-index">
+        <div class="header-nav">
+          <div class="right">
+          </div>
+        </div>
+        <div class="markdown-body"><h1 id="!!!-discontinued-!!!">!!! DISCONTINUED !!!</h1>
+<p>I&apos;m going to move my efforts to focusing on async peewee</p>
+<h1 id="knackles">Knackles</h1>
+<p>Knackles is an async ORM.  Knackles is currently under development and
+this documentation serves as a reference for implementation.</p>
+<pre><code class="lang-python"><span class="pl-k">from</span> knackles <span class="pl-k">import</span> Model, CharField, IDField, PostgresDatabase
+
+database = PostgresDatabase(host=<span class="pl-s">&apos;postgres&apos;</span>, user=<span class="pl-s">&apos;pguser&apos;</span>, password=<span class="pl-s">&apos;moonmoonwhy&apos;</span>, database=<span class="pl-s">&apos;moon_test&apos;</span>)
+
+<span class="hljs-class"><span class="pl-k">class</span> <span class="pl-ent">User</span><span class="hljs-params">(Model)</span>:</span>
+    name     = CharField(size=<span class="hljs-number">100</span>)
+    password = CharField(size=<span class="hljs-number">32</span>)
+    language = CharField(size=<span class="hljs-number">32</span>, default=<span class="pl-s">&apos;english&apos;</span>)
+
+<span class="pl-k">async</span> <span class="hljs-function"><span class="pl-k">def</span> <span class="pl-ent">main</span><span class="hljs-params">()</span>:</span>
+    <span class="pl-c"># Create table</span>
+    <span class="pl-k">await</span> User.table.create()
+
+    <span class="pl-c"># Create a user</span>
+    user = <span class="pl-k">await</span> User.create(name=<span class="pl-s">&apos;kim&apos;</span>, password=<span class="pl-s">&apos;batterystaplehorse&apos;</span>)
+
+    <span class="pl-c"># Create a user another way</span>
+    user = User()
+    user.name = <span class="pl-s">&apos;john&apos;</span>
+    user.password = <span class="pl-s">&apos;password1&apos;</span>
+    <span class="pl-k">await</span> user.save()
+
+    <span class="pl-c"># Fetch a user</span>
+    user = <span class="pl-k">await</span> User.get(name=<span class="pl-s">&apos;test&apos;</span>)
+
+    <span class="pl-c"># Fetch many users</span>
+    users = User.where(language=<span class="pl-s">&apos;english&apos;</span>)
+    <span class="pl-k">async</span> <span class="pl-k">for</span> user <span class="pl-k">in</span> users:
+        print(user.name)
+
+    <span class="pl-c"># Update many users</span>
+    <span class="pl-k">await</span> User.where(language=<span class="pl-s">&apos;english&apos;</span>).update(language=<span class="pl-s">&apos;turbo_memes&apos;</span>)
+
+    <span class="pl-c"># Delete many users</span>
+    <span class="pl-k">await</span> User.where(language=<span class="pl-s">&apos;english&apos;</span>).delete()
+
+    <span class="pl-c"># Atomic</span>
+    <span class="pl-k">async</span> <span class="pl-k">with</span> database.atomic():
+        <span class="pl-k">await</span> User.create(name=<span class="pl-s">&apos;i_wont_exist&apos;</span>, password=<span class="pl-s">&apos;password2&apos;</span>)
+        <span class="pl-k">await</span> User.create(name=<span class="pl-s">&apos;i_have_no_password&apos;</span>)
+
+
+<span class="pl-k">from</span> asyncio <span class="pl-k">import</span> get_event_loop
+loop = get_event_loop()
+loop.run_until_complete(main())
+</code></pre>
+<h2 id="planned-features">Planned Features</h2>
+<ul>
+<li>Atomic Transactions</li>
+<li>Foreign Keys</li>
+<li>Many to Many</li>
+<li>Mysql Support</li>
+<li>SQLite Support</li>
+</ul>
+
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

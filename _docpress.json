@@ -1,0 +1,44 @@
+{
+  "toc": {
+    "sections": [
+      {
+        "title": "!!! DISCONTINUED !!!",
+        "source": "README.md",
+        "expand": true,
+        "url": "index.html",
+        "slug": "index",
+        "headings": [
+          {
+            "title": "Planned Features",
+            "depth": 2,
+            "id": "planned-features"
+          }
+        ]
+      }
+    ]
+  },
+  "index": {
+    "index.html": {
+      "source": "README.md",
+      "title": "!!! DISCONTINUED !!!",
+      "pageTitle": "!!! DISCONTINUED !!!",
+      "slug": "index",
+      "headings": [
+        {
+          "title": "Planned Features",
+          "depth": 2,
+          "id": "planned-features"
+        }
+      ]
+    }
+  },
+  "sources": {
+    "README.md": "index.html",
+    "docs/Makefile": "Makefile",
+    "docs/conf.py": "conf.py",
+    "docs/index.rst": "index.rst",
+    "docs/make.bat": "make.bat",
+    "docs/knackles/examples.rst": "knackles/examples.rst",
+    "docs/knackles/installation.rst": "knackles/installation.rst"
+  }
+}
